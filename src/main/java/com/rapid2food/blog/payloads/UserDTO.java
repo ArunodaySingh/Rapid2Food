@@ -24,10 +24,4 @@ public class UserDTO {
 	 
 	 @NotNull
 	 private int registrationNo;
-	 
-	 @NotNull
-	 private String degree;
-	 
-	 @NotNull
-	 private String section;
 }

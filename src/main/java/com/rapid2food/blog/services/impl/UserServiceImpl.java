@@ -34,9 +34,6 @@ public class UserServiceImpl implements UserServices
 		user.setName(userDTO.getName());
 		user.setEmail(userDTO.getEmail());
 		user.setPassword(userDTO.getPassword());
-		user.setRegistrationNo(userDTO.getRegistrationNo());
-		user.setDegree(userDTO.getDegree());
-		user.setSection(userDTO.getSection());
 		User updateduser=this.userRepo.save(user);
 		UserDTO userdto1=this.userToDto(updateduser);
 		return userdto1;
@@ -73,8 +70,6 @@ public class UserServiceImpl implements UserServices
 		user.setEmail(userDto.getEmail());
 		user.setPassword(userDto.getPassword());
 		user.setRegistrationNo(userDto.getRegistrationNo());
-		user.setDegree(userDto.getDegree());
-		user.setSection(userDto.getSection());
 		return user;
 	}
 	
@@ -87,8 +82,6 @@ public class UserServiceImpl implements UserServices
 		userdto.setEmail(user.getEmail());
 		userdto.setPassword(user.getPassword());
 		userdto.setRegistrationNo(user.getRegistrationNo());
-		userdto.setDegree(user.getDegree());
-		userdto.setSection(user.getSection());
 		return userdto;
 	}
 

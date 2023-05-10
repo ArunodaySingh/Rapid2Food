@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.rapid2food.blog.entities.Category;
 import com.rapid2food.blog.exception.ResourceNotFoundException;
 import com.rapid2food.blog.payloads.CategoryDto;
@@ -25,7 +24,6 @@ public class CategoryServiceImpl implements CategoryService  {
 
 	@Override
 	public CategoryDto createCategory(CategoryDto categoryDto) {
-		
 		Category cat=this.modelMapper.map(categoryDto,Category.class);
 		Category addedblock=this.categoryRepo.save(cat);
 		return this.modelMapper.map(addedblock, CategoryDto.class);

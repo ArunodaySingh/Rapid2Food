@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,10 +28,11 @@ public class UserController {
 	@Autowired 
 	private UserServices userservices;
 	// POST-create user
+	
+	@CrossOrigin(origins = "http://127.0.0.1:5173/")
 	@PostMapping("/")
 	public ResponseEntity<UserDTO> createUser(@Valid @RequestBody UserDTO userDto){
 		UserDTO createUserDto=this.userservices.createUSer(userDto);
-		
 		return new ResponseEntity<>(createUserDto,HttpStatus.CREATED);
 	}
 	
@@ -40,7 +42,6 @@ public class UserController {
 	{
 		UserDTO userupdate=this.userservices.updateUser(userDto, uid);
 		return ResponseEntity.ok(userupdate);
-		
 	}
 	
 	
@@ -53,6 +54,7 @@ public class UserController {
 	}  
 	
 	// GET - All user get
+	@CrossOrigin(origins = "http://127.0.0.1:5173/")
 	@GetMapping("/")
 	public ResponseEntity<List<UserDTO>>getAllUsers()
 	{
@@ -60,16 +62,14 @@ public class UserController {
 	}
 	
 	// GET - All user get
+	@CrossOrigin(origins = "http://127.0.0.1:5173/")
 		@GetMapping("/{userid}")
 		public ResponseEntity<UserDTO> getSingleUser(@PathVariable("userid") Integer uid)
 		{
 			return  ResponseEntity.ok(this.userservices.getUserById(uid));	
 		}
-		
-	
-	
 }
 
-// USERDTO islia bnya hai kyuki hum apne user ko directly expose na kre 
+// USERDTO islia bnya hai kyuki hum apne user ko directly expose na kre should follow MVC architecture
 
 

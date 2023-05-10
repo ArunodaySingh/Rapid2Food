@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,6 +46,7 @@ public class BlockController
 	
 	
 	//delete
+	@CrossOrigin(origins = "http://127.0.0.1:5173/")
 	@DeleteMapping("/{categoryId}")
 	public ResponseEntity<ApiResponse> deleteCategory(@PathVariable Integer categoryId)
 	{
@@ -58,12 +60,10 @@ public class BlockController
 	{
 		CategoryDto categorydto=this.categoryservice.getCategory(catId);
 		return new ResponseEntity<CategoryDto>(categorydto,HttpStatus.OK);
-		
 	}
 	
-	
 	//getAll
-	
+	@CrossOrigin(origins = "http://127.0.0.1:5173/")
 	@GetMapping("/")
 	public ResponseEntity<List<CategoryDto>> getAllCategory()
 	{

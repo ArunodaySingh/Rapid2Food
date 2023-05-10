@@ -1,10 +1,16 @@
 package com.rapid2food.blog.entities;
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,8 +30,9 @@ public class User {
  private String email;
  private String password;
  private int registrationNo;
- private String degree;
- private String section;
+ 
+ @OneToMany(mappedBy="user",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+ private List<Store>posts=new ArrayList<>(); 
 }
 
 // we can change the column name by using @column(name="UserName",nullable=false,length=100  ) annotation 
